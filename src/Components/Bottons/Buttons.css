@@ -1,4 +1,4 @@
-.add-btn, .more-btn, .send-btn {
+.add-btn, .more-btn, .send-btn, .go-btn {
   background: #139DF2;
   padding: 0.5rem 0.7rem;
   border: none;
@@ -7,7 +7,7 @@
   font-weight: bold;
 }
 
-.add-btn:hover, .more-btn:hover, .send-btn:hover {
+.add-btn:hover, .more-btn:hover, .send-btn:hover, .go-btn:hover {
   background: white;
   color: #139DF2;
   border: 2px solid #139DF2;

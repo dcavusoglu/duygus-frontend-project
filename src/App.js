@@ -7,11 +7,11 @@ import {
 } from "react-router-dom";
 
 import { NavBar, Footer } from './Layouts';
-import {Home, Contact, Services, About}  from './Pages';
+import {Home, Contact, Services, About, SingleProduct}  from './Pages';
 // import Home from './Pages/Home/Home'
 // import About from './Pages/About/About'
 // import Contact from './Pages/Contact/Contact'
-// import Services from './Pages/Services/Services'
+// import Services from './Pages/Services/Services's
 // import NavBar from './Layouts/NavBar/NavBar'
 // import Footer from './Layouts/Footer/Footer'
 
@@ -21,10 +21,11 @@ function App() {
       <BrowserRouter>
         <NavBar/>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home />} className='home-body'/>
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/services' element={<Services />} />
+          <Route path='/product/:id' element={<SingleProduct />} />
         </Routes>
         <Footer/>
       </BrowserRouter>
