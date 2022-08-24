@@ -1,0 +1,40 @@
+.navbar-container {
+  height: 4rem;
+  width: 100%;
+  margin-top: 0;
+  background: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company-name-cont{
+  margin: 1rem;
+}
+
+.company-name {
+  color: whitesmoke;
+  text-decoration: none;
+  font-weight: bolder;
+}
+
+.navbar-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+}
+
+
+.navbar-item {
+  list-style: none;
+}
+
+.navbar-item a {
+  color: whitesmoke;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: bolder;
+}
