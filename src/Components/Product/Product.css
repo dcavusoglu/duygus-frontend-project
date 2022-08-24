@@ -1,6 +1,40 @@
+.page-wrapper {
+  text-align: center;
+}
+
 .product-container {
   display: flex;
   flex-direction: row;
-  flex: 50%;
+  justify-content: center;
+  align-items: start;
+  margin: auto;
+  width: 80%;
 }
 
+.left-column, .right-column {
+  flex: 60% 40%;
+  text-align: left;
+  padding: 1rem;
+}
+
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.product-title, .product-thumbnail, .product-description,
+.search-box, .product-tags, .product-images, .product-info {
+  margin: 1rem;
+}
+
+.input-go {
+  display: flex;
+  flex-direction: row;
+  margin-top: .5rem;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+}

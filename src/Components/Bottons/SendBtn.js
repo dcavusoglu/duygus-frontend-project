@@ -3,7 +3,7 @@ import './Buttons.css'
 const SendBtn = () => {
   return (
     <div>
-      <button className='send-btn'>Send</button>
+      <button className='send-btn' type='submit'>Send</button>
     </div>
   )
 }
