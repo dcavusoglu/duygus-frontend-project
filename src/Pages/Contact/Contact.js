@@ -7,16 +7,16 @@ const Contact = () => {
   <div className="contact-container">
     <form action="" className="info-container">
 
-    <label for="fname">First Name</label>
+    <label >First Name</label>
     <input type="text" className="form-item" name="firstname" placeholder="Your name.."/>
 
-    <label for="lname">Last Name</label>
+    <label >Last Name</label>
     <input type="text" className="form-item" name="lastname" placeholder="Your last name.."/>
 
-    <label for="subject">Title</label>
+    <label >Title</label>
     <input type="text" className="form-item" name="subject" placeholder="Write the title.."/>
 
-    <label for="subject">Message</label>
+    <label >Message</label>
     <textarea className="form-item" name="message" placeholder="Write your message here.."/>
 
     <SendBtn/>

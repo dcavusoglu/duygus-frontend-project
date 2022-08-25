@@ -1,19 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 import './ProductCard.css'
 import MoreBtn from "../Bottons/MoreBtn";
 
+
 const ProductCard = () => {
+  const [allProducts, setAllProducts] = useState([]);
+
+  useEffect (() => {
+    const endPoint = 'https://dummyjson.com/products'
+      axios.get(endPoint)
+        .then((res) => {
+          const allProducts = res.data.products
+          console.log('All:', res.data.products.map(product => product.images.map(img =>img)))
+          setAllProducts(allProducts)
+        })
+        .catch(err => console.log(`Error: ${err}`))
+
+  }, [])
+
   return (
     <div className='product-card'>
-      <div className='product-img-cont'>
-          <img src="https://picsum.photos/200/300" alt="pic-img" />
-      </div>
-      <div className='product-info'>
-        <h1 className='product-name'>Product name</h1>
-        <p className='product-detail'>Implementing stack with its manipulation methods — Stack Data Structure Stack is a linear data structure, which means its elements are connected in a sequential order and each element connected to the element in front </p>
-        
-        <MoreBtn />
-      </div>
+      {allProducts.map(product => (
+      <Link to={`/product/${product.id}`} className='product-link' key={product.id}>
+        <div className='product-img-cont'>
+            <img src={product.thumbnail} alt="pic-img" />
+        </div>
+        <div className='product-info'>
+          <h1 className='product-name'>{product.title}</h1>
+          <p className='product-detail'>{product.description}</p>
+          <MoreBtn />
+{/*
+          {
+            allProducts.map(product =>  { return product.images.map(imgage => <img src={imgage.toString()} alt='imggg'/>)})
+          } */}
+        </div>
+        </Link>
+      ))
+      }
     </div>
   )
 }

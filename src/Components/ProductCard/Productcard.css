@@ -1,6 +1,6 @@
 .product-card {
   height: 420px;
-  width: 654px;
+  width: 1000px;
   margin: 50px auto;
 }
 
@@ -9,11 +9,12 @@
 .product-img-cont {
   float: left;
   height: 420px;
-  width: 327px;
+  width: 650px;
 }
 
 .product-img-cont img {
   border-radius: 7px 0 0 7px;
+  width: max-width;
 }
 
 .product-info {
@@ -27,8 +28,15 @@
 
 .product-name {
   text-align: left;
+  margin-bottom: 1.5rem;
 }
 
 .product-detail {
   text-align: justify;
+  margin-bottom: 1.5rem;
+}
+
+.product-link {
+  text-decoration: none;
+  color: black;
 }

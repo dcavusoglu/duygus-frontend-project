@@ -8,14 +8,15 @@
 
 .first-img-cont {
   margin: 1rem 1rem 1rem 1rem;
-  height: 500px;
-  width: 600px;
+  flex: 50%;
 }
 
 .first-img {
   object-fit: fill;
 }
 .first-details-cont {
+  float:left;
+  flex: 50%;
   margin: 1rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
@@ -25,4 +26,9 @@
 
 .first-details {
   text-align: justify;
+  margin-bottom: 1.5rem;
+}
+.first-heading {
+  margin-bottom: 1.5rem;
+
 }
