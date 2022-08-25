@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import { NavBar, Footer } from './Layouts';
-import {Home, Contact, Services, About, SingleProduct}  from './Pages';
+import {Home, Contact, Services, About, SingleProduct, NewProducts}  from './Pages';
 // import Home from './Pages/Home/Home'
 // import About from './Pages/About/About'
 // import Contact from './Pages/Contact/Contact'
@@ -26,6 +26,7 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/services' element={<Services />} />
           <Route path='/product/:id' element={<SingleProduct />} />
+          <Route path='/products/:id' element={<NewProducts />} />
         </Routes>
         <Footer/>
       </BrowserRouter>

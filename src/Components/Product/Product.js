@@ -16,8 +16,8 @@ const Product = () => {
     axios.get(endPoint)
     .then((res) => {
       const product = res.data.products[id]
-      console.log('Products:', product)
-      console.log(product.images[0])
+      // console.log('Products:', product)
+      // console.log(product.images[0])
       setProduct(product)
     })
     .catch(err => console.log(`Error: ${err}`))

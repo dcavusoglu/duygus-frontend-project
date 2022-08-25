@@ -5,7 +5,7 @@ import ProductCard from '../../Components/ProductCard/ProductCard'
 const Home = () => {
   return (
     <div>
-      Home
+
       <FirstProduct/>
       <div className='product-cont'>
 
