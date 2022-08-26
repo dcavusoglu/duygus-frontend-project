@@ -50,17 +50,17 @@ const Services = () => {
   const endPoint = 'https://dummyjson.com/products'
 
   const submitForm = (e) => {
-    e.preventDefault();
 
     const formData = new FormData();
     formData.append('data', data );
 
 
     axios.post(endPoint, formData)
-          .then((res) => {
-            alert('Product Added Successfully');
-          })
-          .catch((err) => alert('Something went wrong!'));
+    .then((res) => {
+      alert('Product Added Successfully');
+    })
+    .catch((err) => alert('Something went wrong!'));
+    e.preventDefault();
   }
 
 
