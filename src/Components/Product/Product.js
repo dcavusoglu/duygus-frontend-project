@@ -19,6 +19,7 @@ const Product = () => {
       // console.log('Products:', product)
       // console.log(product.images[0])
       setProduct(product)
+      console.log(product)
     })
     .catch(err => console.log(`Error: ${err}`))
 

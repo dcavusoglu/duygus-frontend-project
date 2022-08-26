@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-// import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import {Link} from 'react-router-dom'
 import './Services.css'
 import axios from 'axios'
 import SendBtn from '../../Components/Bottons/SendBtn'
@@ -8,58 +8,73 @@ import MoreBtn from '../../Components/Bottons/MoreBtn'
 
 
 const Services = () => {
-  const [data, setData] = useState(
-    {title: "",
-    id:"",
-    price: "",
-    discount: "",
-    brand:"",
-    category:"",
-    stock: "",
-    rating: "",
-    description:"",
-    thumbnail:"",
-    images: [],
-    })
+const [newProducts, setNewProducts] = useState([]);
+useEffect(() => {
+  const readNewProducts = () => {
+    if(localStorage.getItem('newProducts')) {
+      setNewProducts(JSON.parse(localStorage.getItem('newProducts')))
+    }
+  }
+  readNewProducts()
+}, []);
 
+
+
+const [data, setData] = useState(
+  {title: "",
+  price: Number(),
+  id: 32,
+  discountPercentage: Number(),
+  brand:"",
+  category:"",
+  stock: Number(),
+  rating: Number(),
+  description:"",
+  thumbnail:"",
+  images: [],
+})
+
+// const idGen = () => {
+//   const ID = [newProducts.length -1].id +31
+// }
 
 
 // const [allBrands, setAllBrands] = useState([]);
 // const [allCategories, setAllCategories] = useState([]);
 
 //   useEffect (() => {
-//     const endPoint = 'https://dummyjson.com/products'
-//       axios.get(endPoint)
-//         .then((res) => {
-//           const productBrand = res.data.products.map(product => product.brand.toLowerCase())
+  //     const endPoint = 'https://dummyjson.com/products'
+  //       axios.get(endPoint)
+  //         .then((res) => {
+    //           const productBrand = res.data.products.map(product => product.brand.toLowerCase())
 
-//           const brands = [...new Set(productBrand)]
-//           setAllBrands(brands.map(brand => brand.toUpperCase()));
+    //           const brands = [...new Set(productBrand)]
+    //           setAllBrands(brands.map(brand => brand.toUpperCase()));
 
-//           const productCategory = res.data.products.map(product => product.category)
-//           const categories = [...new Set(productCategory)]
-//           setAllCategories(categories);
+    //           const productCategory = res.data.products.map(product => product.category)
+    //           const categories = [...new Set(productCategory)]
+    //           setAllCategories(categories);
 
-//         })
-//         .catch(err => console.log(`Error: ${err}`))
+    //         })
+    //         .catch(err => console.log(`Error: ${err}`))
 
-//   }, [])
+    //   }, [])
 
 
 
-  const endPoint = 'https://dummyjson.com/products'
+    const endPoint = 'https://dummyjson.com/products'
 
   const submitForm = (e) => {
 
     const formData = new FormData();
     formData.append('data', data );
-
-
     axios.post(endPoint, formData)
     .then((res) => {
       alert('Product Added Successfully');
     })
     .catch((err) => alert('Something went wrong!'));
+    formData.push(newProducts)
+    localStorage.setItem('newProducts', JSON.stringify(newProducts))
     e.preventDefault();
   }
 
@@ -75,10 +90,14 @@ const Services = () => {
     console.log(newData);
   }
 
+  const handleInt = (e) => {
+    parseInt(e.target.value)
+  }
 
   return (
     <div >
       <form className='upload-form'>
+
         <label >Title</label>
         <input type="text" value={data.title} id='title' onChange={(e) => handleData(e)}/>
 
@@ -92,40 +111,40 @@ const Services = () => {
         <input type="text" value={data.description} id='description' onChange={(e) => handleData(e)}/>
 
         {/* <label>Choose brand name:</label>
-        <select name="brand" id="brand" onChange={(e) => handleData(e)} value={data.brand}>
-          {allBrands.map(brand => <option value={data.brand} onChange={(e) => handleData(e)} key={brand}>{brand}</option>)}
+        <select name="brand" id="brand" onSelect={(e) => handleData(e)} value={data.brand}>
+          {allBrands.map(brand => <option key={brand}>{brand}</option>)}
         </select> */}
 {/*
         <label>Choose a category:</label>
-        <select name="category" id="category">
-          {allCategories.map(cat => <option value={data.category} key={cat}>{cat}</option>)}
+        <select name="category" id="category" value={data.category} onSelect={(e) => handleData(e)}>
+          {allCategories.map(cat => <option key={cat}>{cat}</option>)}
         </select> */}
 
         <label >Price</label>
-        <input type="text" value={data.price} id='price' onChange={(e) => handleData(e)}/>
+        <input type="number" value={parseInt(data.price)} id='price' onChange={(e) => handleData(e)}/>
         <label >Discount Percentage</label>
-        <input type="text" value={data.discount} id='discount' onChange={(e) => handleData(e)}/>
+        <input type="number" value={data.discountPercentage} id='discountPercentage' onChange={(e) => handleData(e)}/>
         <label >Stock</label>
-        <input type="text" value={data.stock} id='stock' onChange={(e) => handleData(e)}/>
+        <input type="number" value={data.stock} id='stock' onChange={(e) => handleData(e)}/>
         <label >Rating</label>
-        <input type="text" value={data.rating} id='rating' onChange={(e) => handleData(e)}/>
+        <input type="number" value={data.rating} id='rating' onChange={(e) => handleData(e)}/>
 
 
         <label >Thumbnail Url</label>
-        <input type="text" id='thumbnail' value={data.thumbnail} onChange={(e) => handleData(e)}/>
+        <input type="url" id='thumbnail' value={data.thumbnail} onChange={(e) => handleImageUrls(e)}/>
         <label >Product Picture Url</label>
-        <input type="text" id='image1' value={data.images.image1} onChange={(e) => handleImageUrls(e)}/>
+        <input type="url" id='image1' value={data.images.image1} onChange={(e) => handleData(e)}/>
         <label >Product Picture  Url</label>
-        <input type="text" id='image2' value={data.images.image2} onChange={(e) => handleImageUrls(e)}/>
+        <input type="url" id='image2' value={data.images.image2} onChange={(e) => handleData(e)}/>
         <label >Product Picture  Url</label>
-        <input type="text" id='image3' value={data.images.image3} onChange={(e) => handleImageUrls(e)}/>
+        <input type="url" id='image3' value={data.images.image3} onChange={(e) => handleData(e)}/>
 
 
 
 
-        {/* <Link to={`/products/${data.id}`}> */}
+        <Link to={`/products/${data.id}`}>
           <SendBtn onClick={submitForm}/>
-        {/* </Link> */}
+        </Link>
 
       </form>
 

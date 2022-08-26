@@ -23,7 +23,7 @@ const ProductCard = () => {
   return (
     <div className='product-card'>
       {allProducts.map(product => (
-      <Link to={`/product/${product.id}`} className='product-link' key={product.id}>
+      <Link to={`/products/${product.id}`} className='product-link' key={product.id}>
         <div className='product-img-cont'>
             <img src={product.thumbnail} alt="pic-img" />
         </div>
