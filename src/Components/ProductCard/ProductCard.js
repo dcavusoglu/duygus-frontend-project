@@ -21,24 +21,27 @@ const ProductCard = () => {
   }, [])
 
   return (
-    <div className='product-card'>
+    <div className='body-wrapper'>
+      <div className='card-wrapper'>
       {allProducts.map(product => (
-      <Link to={`/products/${product.id}`} className='product-link' key={product.id}>
-        <div className='product-img-cont'>
-            <img src={product.thumbnail} alt="pic-img" />
-        </div>
-        <div className='product-info'>
-          <h1 className='product-name'>{product.title}</h1>
-          <p className='product-detail'>{product.description}</p>
-          <MoreBtn />
-{/*
-          {
-            allProducts.map(product =>  { return product.images.map(imgage => <img src={imgage.toString()} alt='imggg'/>)})
-          } */}
-        </div>
-        </Link>
+          <Link to={`/products/${product.id-1}`} className='product--link' key={product.id}>
+
+            <div className={(product.id-1 == 0) ? 'first-product-container' : 'product-wrapper'}>
+              <div className={(product.id-1 == 0) ? 'first-img-cont' : 'imgage-wrapper'}>
+                  <img src={product.thumbnail} alt="pic-img"  className={(product.id-1 == 0) ? 'first-img' : 'product-picture'}/>
+              </div>
+              <div className={(product.id-1 == 0) ? 'first-details-cont' : 'info-wrapper'}>
+                <h1 className={(product.id-1 == 0) ? 'first-heading' : 'pro-title'}>{product.title}</h1>
+                <p className={(product.id-1 == 0) ? 'first-details' : 'pro-description'}>{product.description}</p>
+                <MoreBtn />
+              </div>
+            </div>
+
+
+            </Link>
       ))
       }
+          </div>
     </div>
   )
 }

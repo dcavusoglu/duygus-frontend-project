@@ -1,20 +1,23 @@
 .page-wrapper {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .product-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: start;
-  margin: auto;
+  align-items: center;
+  margin-right: 6rem;
   width: 80%;
 }
 
 .left-column, .right-column {
   flex: 60% 40%;
   text-align: left;
-  padding: 1rem;
+  padding: 2rem;
+  height: 30rem;
 }
 
 .left-column, .right-column {
@@ -23,8 +26,7 @@
 }
 
 
-.product-title, .product-thumbnail, .product-description,
-.search-box, .product-tags, .product-images, .product-info {
+.product-title, .product-thumbnail, .product-description, .product-tags, .product-images, .product-info {
   margin: 1rem;
 }
 
@@ -37,17 +39,36 @@
 .product-info {
   display: flex;
   flex-direction: column;
+  margin-top: 3rem;
+}
+.product-description{
+  height: 5rem;
+}
+.product-thumbnail{
+  height: 25rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
+.img-thumbnail{
+  object-fit: fill;
+  height: 80%;
+  width: 80%;
+}
 .product-images {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   flex: 1;
   width: 400px;
   height: 200px;
+  margin-left: 0px;
 }
 
 .image-item {
   max-height: 150px;
-  max-width: 100px;
+  max-width:130px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }

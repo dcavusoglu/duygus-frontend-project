@@ -1,6 +1,6 @@
-.product-cont{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
+.home-welcome {
+  position: absolute;
+  top: 7rem;
+  left: 2.5rem;
+  color: #183B59;
 }
