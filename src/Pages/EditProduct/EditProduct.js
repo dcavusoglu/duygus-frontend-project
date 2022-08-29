@@ -24,34 +24,35 @@ const EditProduct = () => {
 
   console.log('id',id)
 
-  const handleInput = (event) => {
-  const { name, value } = event.target;
-
-  setEditForm({ ...editForm, [name]: value });
-  };
-
-
-    const handleUrlInput = (event) => {
-      editForm.images.push(event.target.value)
-    }
 
   useEffect (() => {
     const products = JSON.parse(localStorage.getItem('products'));
-      if(products) {
+    if(products) {
 
       const filtered = products.filter(product => product.id === id);
       console.log('f', filtered)
 
       setEditForm(filtered[0]);
-      }
-    }, [])
+    }
+  }, [])
 
-    console.log('editform', editForm)
+  console.log('editform', editForm)
 
 
 
 
     // console.log(editForm);
+
+    const handleInput = (event) => {
+    const { name, value } = event.target;
+
+    setEditForm({ ...editForm, [name]: value });
+    };
+
+
+      const handleUrlInput = (event) => {
+        editForm.images.push(event.target.value)
+      }
 
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -68,9 +69,13 @@ const EditProduct = () => {
 // })
 // .then(res => setEditForm(res))
 // .then(console.log);
+if(editForm) {
+  var oldItems = JSON.parse(localStorage.getItem('products')) || [];
+  const editFormOldVersion = oldItems.map(product => product.id === editForm.id)
+  editFormOldVersion = editForm
+  oldItems.push(editFormOldVersion)
 
-var oldItems = JSON.parse(localStorage.getItem('products')) || [];
-oldItems.push(editForm)
+}
     localStorage.setItem('products', JSON.stringify(oldItems));
 
 
@@ -87,7 +92,7 @@ oldItems.push(editForm)
         <h2>Edit Product</h2>
         <form onSubmit={handleSubmit} className="edit-product-form" >
         <h3><strong>EDIT PRODUCT</strong></h3>
-        <input type='text' value={editForm.id} name='id'/>
+        <input type='text' value={editForm.id} name='id' hidden/>
         <label >Choose an brand:</label>
         <select name="brand" value={editForm.brand} onChange={handleInput}>
           <option value="Apple">Apple</option>
