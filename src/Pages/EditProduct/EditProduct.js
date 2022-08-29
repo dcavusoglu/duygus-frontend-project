@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import './EditProduct.css'
 
 
-
-const initialState = {
-  id:"",
-  title: "",
-  price: "",
-  discountPercentage: "",
-  brand:"",
-  category:"",
-  stock: "",
-  rating: "",
-  description:"",
-  thumbnail:"",
-  images: [],
-}
+// const initialState = {
+//   id:"",
+//   title: "",
+//   price: "",
+//   discountPercentage: "",
+//   brand:"",
+//   category:"",
+//   stock: "",
+//   rating: "",
+//   description:"",
+//   thumbnail:"",
+//   images: [],
+// }
 
 
 const EditProduct = () => {
   const {id} = useParams()
-  const [editForm, setEditForm] = useState(initialState);
+  const [editForm, setEditForm] = useState({});
 
   console.log('id',id)
 
@@ -40,14 +40,13 @@ const EditProduct = () => {
 
 
 
+  // console.log(editForm);
 
-    // console.log(editForm);
-
-    const handleInput = (event) => {
+  const handleInput = (event) => {
     const { name, value } = event.target;
-
-    setEditForm({ ...editForm, [name]: value });
-    };
+    const newData = { ...editForm, [name]: value }
+    setEditForm(newData);
+  };
 
 
       const handleUrlInput = (event) => {
@@ -58,14 +57,12 @@ const EditProduct = () => {
       event.preventDefault();
 
 
-// setEditForm(editForm)
-  var oldItems = JSON.parse(localStorage.getItem('products')) || [];
+      // setEditForm(editForm)
 
-if(editForm.id === id) {
-  const editSt = JSON.stringify(editForm)
-  oldItems.push({...editForm, editSt})
-}
-    localStorage.setItem('products', JSON.stringify(oldItems));
+
+      const products = JSON.parse(localStorage.getItem('products'));
+
+    localStorage.setItem('products', JSON.stringify(products.push(editForm)));
 
 };
 
@@ -74,12 +71,11 @@ if(editForm.id === id) {
 
 
   return (
-    <div>
+    <div className='edit-wrapper'>
       <div>
         <h2>Edit Product</h2>
         <form onSubmit={handleSubmit} className="edit-product-form" >
-        <h3><strong>EDIT PRODUCT</strong></h3>
-        <input type='text' value={editForm.id} name='id' hidden/>
+        {/* <input type='text' value={editForm.id} name='id' hidden/> */}
         <label >Choose an brand:</label>
         <select name="brand" value={editForm.brand} onChange={handleInput}>
           <option value="Apple">Apple</option>
@@ -102,6 +98,15 @@ if(editForm.id === id) {
           type="text"
           name="title"
           value={editForm.title}
+          onChange={handleInput}
+          className="form-input"
+        />
+        <br/>
+        <label>Description:</label>
+        <input
+          type="text"
+          name="description"
+          value={editForm.description}
           onChange={handleInput}
           className="form-input"
         />

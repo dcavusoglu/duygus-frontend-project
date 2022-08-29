@@ -50,14 +50,15 @@ const NewProduct = () => {
             <div className='info-wrapper'>
               <h1 className='pro-title'>{product.title}</h1>
               <p className='pro-description'>{product.description}</p>
-              <Link to={`/products/edit/${product.id}`}>
-                <button type="button" className='btn'>Edit</button>
-              </Link>
-              <Link to='/services'>
-                <button type="button" className='btn' onClick={handleDelete} value={product.id}>Delete</button>
-              </Link>
+              <div className='btn-wrapper'>
+                <Link to={`/products/edit/${product.id}`}>
+                  <button type="button" className='go-btn'>Edit</button>
+                </Link>
+                <Link to='/services'>
+                  <button type="button" className='go-btn delete-btn' onClick={handleDelete} value={product.id}>Delete</button>
+                </Link>
+              </div>
             </div>
-
           </div>
         )) : <div> <p>Yeni ürün eklenmedi</p> </div>
         }

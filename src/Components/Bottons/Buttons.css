@@ -14,6 +14,16 @@
   cursor: pointer;
 }
 
+.delete-btn {
+  background: salmon;
+  margin-left: 1rem;
+}
+.delete-btn:hover {
+  background: white;
+  color: salmon;
+  border: 2px solid salmon;
+  cursor: pointer;
+}
 
 .plus-sign {
   margin-left: 0.3rem;

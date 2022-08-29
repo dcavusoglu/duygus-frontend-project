@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import uuid from 'react-uuid';
 import './AddProduct.css'
 var initialState = {
@@ -81,114 +80,114 @@ const [addForm, setAddForm] = useState(initialState);
           <option value="cables">cables</option>
         </select>
         <br />
-<div className='form-wrapper'>
-  <div className='form-part'>
-    <div className='add-form-item'>
-      <label>Product Name:</label>
-      <input
-        type="text"
-        name="title"
-        value={addForm.title}
-        onChange={handleInput}
-        className="form-input input-align"
-      />
-    </div>
-    <div className='add-form-item'>
-      <label>Description:</label>
-      <input
-        type="text"
-        name="description"
-        value={addForm.description}
-        onChange={handleInput}
-        className="form-input input-align"
-      />
-    </div>
-    <div className='add-form-item'>
-      <label>Price:</label>
-      <input
-        type="number"
-        name="price"
-        value={addForm.price}
-        onChange={handleInput}
-        className="form-input input-align"
-      />
-    </div>
-    <div className='add-form-item'>
-      <label>Discount:</label>
-      <input
-        type="number"
-        name="discountPercentage"
-        value={addForm.discountPercentage}
-        onChange={handleInput}
-        className="form-input input-align"
-      />
-    </div>
-    <div className='add-form-item'>
-      <label>Stock:</label>
-      <input
-        type="number"
-        name="stock"
-        value={addForm.stock}
-        onChange={handleInput}
-        className="form-input input-align"
-      />
-    </div>
-    <div className='add-form-item'>
-      <label>Rating:</label>
-      <input
-      type="number"
-        name="rating"
-        value={addForm.rating}
-        onChange={handleInput}
-        className="form-input input-align"
-      />
-    </div>
-  </div>
+        <div className='form-wrapper'>
+          <div className='form-part'>
+            <div className='add-form-item'>
+              <label>Product Name:</label>
+              <input
+                type="text"
+                name="title"
+                value={addForm.title}
+                onChange={handleInput}
+                className="form-input input-align"
+              />
+            </div>
+            <div className='add-form-item'>
+              <label>Description:</label>
+              <input
+                type="text"
+                name="description"
+                value={addForm.description}
+                onChange={handleInput}
+                className="form-input input-align"
+              />
+            </div>
+            <div className='add-form-item'>
+              <label>Price:</label>
+              <input
+                type="number"
+                name="price"
+                value={addForm.price}
+                onChange={handleInput}
+                className="form-input input-align"
+              />
+            </div>
+            <div className='add-form-item'>
+              <label>Discount:</label>
+              <input
+                type="number"
+                name="discountPercentage"
+                value={addForm.discountPercentage}
+                onChange={handleInput}
+                className="form-input input-align"
+              />
+            </div>
+            <div className='add-form-item'>
+              <label>Stock:</label>
+              <input
+                type="number"
+                name="stock"
+                value={addForm.stock}
+                onChange={handleInput}
+                className="form-input input-align"
+              />
+            </div>
+            <div className='add-form-item'>
+              <label>Rating:</label>
+              <input
+              type="number"
+                name="rating"
+                value={addForm.rating}
+                onChange={handleInput}
+                className="form-input input-align"
+              />
+            </div>
+          </div>
 
-  <div className='form-part'>
-    <div className='add-form-item'>
-      <label>Thumbnail:</label>
-      <input
-      type="text"
-      name="thumbnail"
-      value={addForm.thumbnail}
-      onChange={handleInput}
-      className="form-input input-align"
-      />
-    </div>
-    <div className='add-form-item'>
-      <label>Image 1:</label>
-      <input
-      type="text"
-      name="imageUrl1"
-      value={addForm.images.imageUrl1}
-      onChange={handleUrlInput}
-      className="form-input input-align"
-      />
-    </div>
-    <div className='add-form-item'>
-      <label>Image 2:</label>
-      <input
-      type="text"
-      name="imageUrl2"
-      value={addForm.images.imageUrl2}
-      onChange={handleUrlInput}
-      className="form-input input-align"
-      />
-    </div>
-    <div className='add-form-item'>
-      <label>Image 3:</label>
-      <input
-      type="text"
-      name="imageUrl3"
-      value={addForm.images.imageUrl3}
-      onChange={handleUrlInput}
-      className="form-input input-align"
-      />
-    </div>
-  </div>
+          <div className='form-part'>
+            <div className='add-form-item'>
+              <label>Thumbnail:</label>
+              <input
+              type="text"
+              name="thumbnail"
+              value={addForm.thumbnail}
+              onChange={handleInput}
+              className="form-input input-align"
+              />
+            </div>
+            <div className='add-form-item'>
+              <label>Image 1:</label>
+              <input
+              type="text"
+              name="imageUrl1"
+              value={addForm.images.imageUrl1}
+              onChange={handleUrlInput}
+              className="form-input input-align"
+              />
+            </div>
+            <div className='add-form-item'>
+              <label>Image 2:</label>
+              <input
+              type="text"
+              name="imageUrl2"
+              value={addForm.images.imageUrl2}
+              onChange={handleUrlInput}
+              className="form-input input-align"
+              />
+            </div>
+            <div className='add-form-item'>
+              <label>Image 3:</label>
+              <input
+              type="text"
+              name="imageUrl3"
+              value={addForm.images.imageUrl3}
+              onChange={handleUrlInput}
+              className="form-input input-align"
+              />
+            </div>
+          </div>
 
-</div>
+        </div>
 
 
     <button type="submit" className='add-btn' >Submit</button>
