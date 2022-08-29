@@ -15,6 +15,8 @@ const Product = () => {
     const endPoint = 'https://dummyjson.com/products'
     axios.get(endPoint)
     .then((res) => {
+      console.log('res',res)
+      console.log('res.data',res.data)
       const product = res.data.products[id]
       // console.log('Products:', product)
       // console.log(product.images[0])

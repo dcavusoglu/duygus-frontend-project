@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 // import axios from 'axios'
-import './NewProduct.css'
+// import './NewProduct.css'
 
+const initialState = []
 
 const NewProduct = () => {
-  const [allProducts, setAllProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState(initialState);
 
 
   useEffect (() => {

@@ -40,6 +40,8 @@ const [addForm, setAddForm] = useState(initialState);
 
     localStorage.setItem('products', JSON.stringify(oldItems));
 
+    setAddForm(initialState);
+
       // Localde cıkan ürün listeleniyor mu? Evet
 
     // ürünleri çek ekrana göster evet

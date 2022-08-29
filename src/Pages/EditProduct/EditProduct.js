@@ -20,85 +20,58 @@ const initialState = {
 
 const EditProduct = () => {
   const {id} = useParams()
-  const [editForm, setEditForm] = useState(initialState);
+  const [editForm, setEditForm] = useState("");
 
   console.log('id',id)
 
-  useEffect (() => {
-    // const apiEndPoint = `https://dummyjson.com/products/${id}`
-    //   axios.get(apiEndPoint)
-    //     .then((res) => {
-    //       const editForm = res.data;
-    //       console.log(res.data)
-    //       setEditForm(editForm)
-    //     })
-    //     .catch(err => console.log(`Error: ${err}`))
-
-    // Here fetch the products from LS
-    //  const products = JSON.parse(localStorage.getItem('products'))
-
-    //  if(products.length >= 1) {
-    //    console.log('products', products.map(product => product));
-    //    console.log('idd', products.map(product => product.id == id))
-    //    const singleProduct = products[id]
-
-      //  products.map(product => {
-        // if(product.id == id) {
-        //   return JSON.stringify(product);
-        // }
-        // console.log('p:', product);
-        // });
-        // setEditForm(singleProduct)
-
-        //another try
-
-
-        const products = JSON.parse(localStorage.getItem('products'));
-        if(products) {
-
-        const filtered = products.filter(product => product.id !== id);
-        console.log('f', filtered)
-        setEditForm(filtered);
-     }
-
-
-
-
-    // }
-
-  }, [])
-
-
   const handleInput = (event) => {
   const { name, value } = event.target;
-   let inputType = event.target.type;
-   if(inputType === 'number') {
-    parseInt(inputType)
-   }
+
   setEditForm({ ...editForm, [name]: value });
   };
 
-  const handleUrlInput = (event) => {
-    editForm.images.push(event.target.value)
-  }
+
+    const handleUrlInput = (event) => {
+      editForm.images.push(event.target.value)
+    }
+
+  useEffect (() => {
+    const products = JSON.parse(localStorage.getItem('products'));
+      if(products) {
+
+      const filtered = products.filter(product => product.id === id);
+      console.log('f', filtered)
+
+      setEditForm(filtered[0]);
+      }
+    }, [])
+
+    console.log('editform', editForm)
 
 
-  // console.log(editForm);
 
-  const handleSubmit = (event) => {
-  event.preventDefault();
-  const { title, price, discountPercentage, brand, stock, category, rating, description, thumbnail, images } = editForm;
 
-  fetch(`https://dummyjson.com/products/${id}`, {
-  method: 'PUT', /* or PATCH */
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    title, price, discountPercentage, brand, stock, category, rating, description, thumbnail, images
+    // console.log(editForm);
 
-  })
-})
-.then(res => setEditForm(res))
-.then(console.log);
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      //   const { title, price, discountPercentage, brand, stock, category, rating, description, thumbnail, images } = editForm;
+
+      //   fetch(`https://dummyjson.com/products/${id}`, {
+
+//   method: 'PUT', /* or PATCH */
+//   headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify({
+//     title, price, discountPercentage, brand, stock, category, rating, description, thumbnail, images
+
+//   })
+// })
+// .then(res => setEditForm(res))
+// .then(console.log);
+
+var oldItems = JSON.parse(localStorage.getItem('products')) || [];
+oldItems.push(editForm)
+    localStorage.setItem('products', JSON.stringify(oldItems));
 
 
 
@@ -114,6 +87,7 @@ const EditProduct = () => {
         <h2>Edit Product</h2>
         <form onSubmit={handleSubmit} className="edit-product-form" >
         <h3><strong>EDIT PRODUCT</strong></h3>
+        <input type='text' value={editForm.id} name='id'/>
         <label >Choose an brand:</label>
         <select name="brand" value={editForm.brand} onChange={handleInput}>
           <option value="Apple">Apple</option>
@@ -248,7 +222,7 @@ const EditProduct = () => {
       }
         <br />
         <Link to='/services'>
-          <button type="submit" onClick={() => (setEditForm(initialState))}>Edit</button>
+          <button type="submit">Edit</button>
         </Link>
       </form>
       </div>
