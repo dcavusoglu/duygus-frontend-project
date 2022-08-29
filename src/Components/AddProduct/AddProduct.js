@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import uuid from 'react-uuid';
 import './AddProduct.css'
 var initialState = {
-  id:"",
+  id:uuid(),
   title: "",
   price: "",
   discountPercentage: "",
@@ -20,6 +21,7 @@ const [addForm, setAddForm] = useState(initialState);
 // const [newProducts, setNewProducts] = useState([]);
 
   const handleInput = (event) => {
+
   const { name, value } = event.target;
   setAddForm({ ...addForm, [name]: value });
   };
@@ -28,31 +30,17 @@ const [addForm, setAddForm] = useState(initialState);
     addForm.images.push(event.target.value)
   }
 
-  console.log(addForm);
+  console.log('addForm boş form', addForm);
 
   const handleSubmit = (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  var { id, title, price, discountPercentage, brand, stock, category, rating, description, thumbnail, images } = addForm;
+    var oldItems = JSON.parse(localStorage.getItem('products')) || [];
+    oldItems.push(addForm);
 
-  // Make api call to the backend to save form data
-  axios
-    .post(
-      "https://dummyjson.com/products/add",
-      { id, title, price, discountPercentage, brand, stock, category, rating, description, thumbnail, images },
-    )
-    .then(() => {
-      setAddForm(initialState);
+    localStorage.setItem('products', JSON.stringify(oldItems));
 
-      var oldItems = JSON.parse(localStorage.getItem('products')) || [];
-      oldItems.push(addForm);
-
-      localStorage.setItem('products', JSON.stringify(oldItems));
-
-    })
-    .catch((error) => console.error(error));
-
-    // Localde cıkan ürün listeleniyor mu? Evet
+      // Localde cıkan ürün listeleniyor mu? Evet
 
     // ürünleri çek ekrana göster evet
 
@@ -65,14 +53,13 @@ const [addForm, setAddForm] = useState(initialState);
     // reset() diye bişey vardı ona bak
 
 
-
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit} className="add-product-form" >
         <h3 className='page-title'><strong>ADD A NEW PRODUCT</strong></h3>
-        <input type='number' value={addForm.id} name='id' onChange={e => {parseInt(e.value)}}/>
+        <input type='text' value={addForm.id} name='id'/>
         <label >Choose an brand:</label>
         <select name="brand" value={addForm.brand} onChange={handleInput} className="add-form-item">
           <option value="Select">Select</option>

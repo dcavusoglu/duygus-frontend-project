@@ -22,27 +22,17 @@ const NewProduct = () => {
 
 
   const handleDelete = (e) => {
-    //     const filtered = products.filter(product => e.product.id === id);
-    //     console.log('F', filtered)
-
-
+    e.preventDefault();
     //     localStorage.setItem('products', JSON.stringify(filtered))
     const pro = e.target.value
     const products = JSON.parse(localStorage.getItem('products'));
-    if(products) {
+    if(products && products.length>= 1) {
 
-    const filtered = products.filter(product => product.id == pro);
-    localStorage.setItem('products', JSON.stringify(filtered));
-    setAllProducts(filtered);
-  }
-  //   }
-    // axios.delete(`https://6309ec1332499100327db682.mockapi.io/product/${id}`)
-    //   .then(res => {
-      //     console.log(res);
-      //     console.log(res.data);
-      //   })
-
+      const filtered = products.filter(product => product.id !== pro);
+      localStorage.setItem('products', JSON.stringify(filtered));
+      setAllProducts(filtered);
     }
+  }
 
 
   return (

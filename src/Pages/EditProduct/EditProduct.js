@@ -35,23 +35,32 @@ const EditProduct = () => {
     //     .catch(err => console.log(`Error: ${err}`))
 
     // Here fetch the products from LS
-     const products = JSON.parse(localStorage.getItem('products'))
+    //  const products = JSON.parse(localStorage.getItem('products'))
 
-     if(products.length >= 1) {
-       console.log('products', products.map(product => JSON.stringify(product)));
-       console.log('products', products.map(product => product.id == id))
-       const singleProduct = products.map(product => {
-        if(product.id == id) {
-          return product;
-        }
-        console.log('p:', product);
-        });
-        setEditForm(singleProduct)
+    //  if(products.length >= 1) {
+    //    console.log('products', products.map(product => product));
+    //    console.log('idd', products.map(product => product.id == id))
+    //    const singleProduct = products[id]
+
+      //  products.map(product => {
+        // if(product.id == id) {
+        //   return JSON.stringify(product);
+        // }
+        // console.log('p:', product);
+        // });
+        // setEditForm(singleProduct)
+
+        //another try
+
+
+        const products = JSON.parse(localStorage.getItem('products'));
+        if(products) {
+
+        const filtered = products.filter(product => product.id !== id);
+        console.log('f', filtered)
+        setEditForm(filtered);
      }
-    //  if(products) {
-    //Find the specific indexed product
-      // const singleProduct = products[id]
-      // console.log('Product id', singleProduct)
+
 
 
 
@@ -94,16 +103,7 @@ const EditProduct = () => {
 
 
 };
-// useEffect(() => {
 
-
-    // axios
-    //   .put(
-    //     `https://6309ec1332499100327db682.mockapi.io/product/${id}`,
-    //   ).then(() => {
-    //   })
-
-  // }, [])
 
 
 
