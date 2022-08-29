@@ -20,7 +20,7 @@ const initialState = {
 
 const EditProduct = () => {
   const {id} = useParams()
-  const [editForm, setEditForm] = useState("");
+  const [editForm, setEditForm] = useState(initialState);
 
   console.log('id',id)
 
@@ -56,29 +56,16 @@ const EditProduct = () => {
 
     const handleSubmit = (event) => {
       event.preventDefault();
-      //   const { title, price, discountPercentage, brand, stock, category, rating, description, thumbnail, images } = editForm;
 
-      //   fetch(`https://dummyjson.com/products/${id}`, {
 
-//   method: 'PUT', /* or PATCH */
-//   headers: { 'Content-Type': 'application/json' },
-//   body: JSON.stringify({
-//     title, price, discountPercentage, brand, stock, category, rating, description, thumbnail, images
-
-//   })
-// })
-// .then(res => setEditForm(res))
-// .then(console.log);
-if(editForm) {
+// setEditForm(editForm)
   var oldItems = JSON.parse(localStorage.getItem('products')) || [];
-  const editFormOldVersion = oldItems.map(product => product.id === editForm.id)
-  editFormOldVersion = editForm
-  oldItems.push(editFormOldVersion)
 
+if(editForm.id === id) {
+  const editSt = JSON.stringify(editForm)
+  oldItems.push({...editForm, editSt})
 }
     localStorage.setItem('products', JSON.stringify(oldItems));
-
-
 
 };
 

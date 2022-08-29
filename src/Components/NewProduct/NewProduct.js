@@ -41,7 +41,7 @@ const NewProduct = () => {
       <div className='card-wrapper'>
         {(allProducts) ? allProducts.map(product => (
 
-          <div key={product.description} className='product-wrapper'>
+          <div key={product.id} className='product-wrapper'>
 
             <div className='imgage-wrapper'>
                 <img src={product.thumbnail} alt="pic-img" className='product-picture'/>

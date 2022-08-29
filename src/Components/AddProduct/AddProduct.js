@@ -61,7 +61,7 @@ const [addForm, setAddForm] = useState(initialState);
     <div>
       <form onSubmit={handleSubmit} className="add-product-form" >
         <h3 className='page-title'><strong>ADD A NEW PRODUCT</strong></h3>
-        <input type='text' value={addForm.id} name='id'/>
+        <input type='text' value={addForm.id} name='id' />
         <label >Choose an brand:</label>
         <select name="brand" value={addForm.brand} onChange={handleInput} className="add-form-item">
           <option value="Select">Select</option>
