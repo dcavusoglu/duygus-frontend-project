@@ -4,7 +4,7 @@ import ProductCard from '../../Components/ProductCard/ProductCard'
 import SearchBox from '../../Components/SearchBox/SearchBox'
 const Home = () => {
   return (
-    <div>
+    <div className='home-container'>
       <div>
         <h2 className='home-welcome'>Best Shop</h2>
         <SearchBox/>

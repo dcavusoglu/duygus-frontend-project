@@ -1,13 +1,14 @@
 import React from "react";
 import NewProduct from "../../Components/NewProduct/NewProduct";
 import AddProduct from "../../Components/AddProduct/AddProduct"
+import './Services.css'
 
 
 const Services = () => {
 
 
   return (
-    <div>
+    <div className="services-container">
        <AddProduct/>
         <br />
 
