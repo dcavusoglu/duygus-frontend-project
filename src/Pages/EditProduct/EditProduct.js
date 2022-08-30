@@ -49,9 +49,9 @@ const EditProduct = () => {
   };
 
 
-      const handleUrlInput = (event) => {
-        editForm.images.push(event.target.value)
-      }
+      // const handleUrlInput = (event) => {
+      //   editForm.images.push(event.target.value)
+      // }
 
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -164,7 +164,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl1"
           value={editForm.images[0]}
-          onChange={handleUrlInput}
+          onChange={handleInput}
           className="form-input"
           />
           <br />
@@ -173,7 +173,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl2"
           value={editForm.images[1]}
-          onChange={handleUrlInput}
+          onChange={handleInput}
           className="form-input"
           />
           <br />
@@ -182,7 +182,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl3"
           value={editForm.images[2]}
-          onChange={handleUrlInput}
+          onChange={handleInput}
           className="form-input"
           />
         </div>
@@ -194,7 +194,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl1"
           value=""
-          onChange={handleUrlInput}
+          onChange={handleInput}
           className="form-input"
           />
           <br />
@@ -203,7 +203,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl2"
           value=""
-          onChange={handleUrlInput}
+          onChange={handleInput}
           className="form-input"
           />
           <br />
@@ -212,19 +212,19 @@ const EditProduct = () => {
           type="text"
           name="imageUrl3"
           value=""
-          onChange={handleUrlInput}
+          onChange={handleInput}
           className="form-input"
           />
         </div>
       }
         <br />
         <Link to='/services'>
-          <button type="submit">Edit</button>
+          <button type="submit" className="edit-btn">Edit</button>
         </Link>
       </form>
-      </div>
       <div>
-        <img src='' alt=''/>
+        <Link to={'/services'} className="back-btn">Back</Link>
+      </div>
       </div>
     </div>
   )
