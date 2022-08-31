@@ -83,7 +83,7 @@ const EditProduct = () => {
 
 
   return (
-    <div>
+    <div className='edit-wrapper'>
       <div>
         <h2>Edit Product</h2>
         <form onSubmit={handleSubmit} className="edit-product-form" >
