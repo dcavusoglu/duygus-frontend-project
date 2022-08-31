@@ -1,38 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
 import './EditProduct.css'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-// const initialState = {
-//   id:"",
-//   title: "",
-//   price: "",
-//   discountPercentage: "",
-//   brand:"",
-//   category:"",
-//   stock: "",
-//   rating: "",
-//   description:"",
-//   thumbnail:"",
-//   images: [],
-// }
+
+const initialState = {
+  id:"",
+  title: "",
+  price: "",
+  discountPercentage: "",
+  brand:"",
+  category:"",
+  stock: "",
+  rating: "",
+  description:"",
+  thumbnail:"",
+  images: [],
+}
 
 
 const EditProduct = () => {
   const {id} = useParams()
-  const [editForm, setEditForm] = useState({});
+  const navigate = useNavigate();
+  const [editForm, setEditForm] = useState(initialState);
 
   console.log('id',id)
 
 
+  const products = JSON.parse(localStorage.getItem('products'));
   useEffect (() => {
-    const products = JSON.parse(localStorage.getItem('products'));
     if(products) {
-
-      const filtered = products.filter(product => product.id === id);
-      console.log('f', filtered)
-
-      setEditForm(filtered[0]);
+      try {
+      // Do something that could throw
+      const productToEdit = products.find(product => product.id === id);
+      console.log(productToEdit);
+      setEditForm(productToEdit);
+      } catch (error) {
+        console.log(error)
+      }
     }
   }, [])
 
@@ -40,30 +45,37 @@ const EditProduct = () => {
 
 
 
-  // console.log(editForm);
 
-  const handleInput = (event) => {
+    // console.log(editForm);
+
+    const handleInput = (event) => {
     const { name, value } = event.target;
-    const newData = { ...editForm, [name]: value }
-    setEditForm(newData);
+
+    setEditForm({ ...editForm, [name]: value });
   };
 
 
-      // const handleUrlInput = (event) => {
-      //   editForm.images.push(event.target.value)
-      // }
-
-    const handleSubmit = (event) => {
-      event.preventDefault();
+  const handleUrlInput = (event) => {
+    const newImages = editForm.images.push(event.target.value)
+    setEditForm({ ...editForm, newImages });
+  }
 
 
-      // setEditForm(editForm)
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
+    console.log('Event', event)
+    try {
+      setEditForm(editForm)
 
-      const products = JSON.parse(localStorage.getItem('products'));
+      var oldItems = JSON.parse(localStorage.getItem('products')) || [];
 
-    localStorage.setItem('products', JSON.stringify(products.push(editForm)));
-
+          oldItems.push(editForm)
+      localStorage.setItem('products', JSON.stringify(oldItems));
+    } catch (error) {
+      console.log('handleSubmit error', error)
+    }
+    navigate('/services')
 };
 
 
@@ -71,11 +83,11 @@ const EditProduct = () => {
 
 
   return (
-    <div className='edit-wrapper'>
+    <div>
       <div>
         <h2>Edit Product</h2>
         <form onSubmit={handleSubmit} className="edit-product-form" >
-        {/* <input type='text' value={editForm.id} name='id' hidden/> */}
+        <h3><strong>EDIT PRODUCT</strong></h3>
         <label >Choose an brand:</label>
         <select name="brand" value={editForm.brand} onChange={handleInput}>
           <option value="Apple">Apple</option>
@@ -98,15 +110,6 @@ const EditProduct = () => {
           type="text"
           name="title"
           value={editForm.title}
-          onChange={handleInput}
-          className="form-input"
-        />
-        <br/>
-        <label>Description:</label>
-        <input
-          type="text"
-          name="description"
-          value={editForm.description}
           onChange={handleInput}
           className="form-input"
         />
@@ -164,7 +167,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl1"
           value={editForm.images[0]}
-          onChange={handleInput}
+          onChange={handleUrlInput}
           className="form-input"
           />
           <br />
@@ -173,7 +176,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl2"
           value={editForm.images[1]}
-          onChange={handleInput}
+          onChange={handleUrlInput}
           className="form-input"
           />
           <br />
@@ -182,7 +185,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl3"
           value={editForm.images[2]}
-          onChange={handleInput}
+          onChange={handleUrlInput}
           className="form-input"
           />
         </div>
@@ -194,7 +197,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl1"
           value=""
-          onChange={handleInput}
+          onChange={handleUrlInput}
           className="form-input"
           />
           <br />
@@ -203,7 +206,7 @@ const EditProduct = () => {
           type="text"
           name="imageUrl2"
           value=""
-          onChange={handleInput}
+          onChange={handleUrlInput}
           className="form-input"
           />
           <br />
@@ -212,15 +215,15 @@ const EditProduct = () => {
           type="text"
           name="imageUrl3"
           value=""
-          onChange={handleInput}
+          onChange={handleUrlInput}
           className="form-input"
           />
         </div>
       }
         <br />
-        <Link to='/services'>
-          <button type="submit" className="edit-btn">Edit</button>
-        </Link>
+
+          <button type="submit">Edit</button>
+
       </form>
       <div>
         <Link to={'/services'} className="back-btn">Back</Link>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+
+
 import uuid from 'react-uuid';
 import './AddProduct.css'
 var initialState = {
-  id:uuid(),
   title: "",
   price: "",
   discountPercentage: "",
@@ -16,8 +17,10 @@ var initialState = {
 }
 
 const AddProduct = () => {
-const [addForm, setAddForm] = useState(initialState);
-// const [newProducts, setNewProducts] = useState([]);
+
+
+  const [addForm, setAddForm] = useState({...initialState, id:uuid()});
+  // const [newProducts, setNewProducts] = useState([]);
 
   const handleInput = (event) => {
 
@@ -40,19 +43,7 @@ const [addForm, setAddForm] = useState(initialState);
     localStorage.setItem('products', JSON.stringify(oldItems));
 
     setAddForm(initialState);
-
-      // Localde cıkan ürün listeleniyor mu? Evet
-
-    // ürünleri çek ekrana göster evet
-
-    // first product için card yapıp class name ata
-
-    // editleri dene
-
-    // delete
-
-    // reset() diye bişey vardı ona bak
-
+    window.location.reload()
 
   };
 
@@ -60,7 +51,7 @@ const [addForm, setAddForm] = useState(initialState);
     <div>
       <form onSubmit={handleSubmit} className="add-product-form" >
         <h3 className='page-title'><strong>ADD A NEW PRODUCT</strong></h3>
-        <input type='text' value={addForm.id} name='id' />
+        <input type='text' value={addForm.id} name='id'/>
         <label >Choose an brand:</label>
         <select name="brand" value={addForm.brand} onChange={handleInput} className="add-form-item">
           <option value="Select">Select</option>
