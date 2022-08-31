@@ -33,13 +33,15 @@ const EditProduct = () => {
       try {
       // Do something that could throw
       const productToEdit = products.find(product => product.id === id);
-      console.log(productToEdit);
       setEditForm(productToEdit);
-      } catch (error) {
-        console.log(error)
-      }
+    } catch (error) {
+      console.log(error)
     }
-  }, [])
+  }
+}, [])
+
+const productToEdit = products.find(product => product.id === id);
+console.log('pe', productToEdit.id);
 
   console.log('editform', editForm)
 
@@ -68,7 +70,14 @@ const EditProduct = () => {
     try {
       setEditForm(editForm)
 
+      // const productToEdit = products.find(product => product.id === id);
+      // if(productToEdit.id === editForm.id) {
+
+      // }
+
+
       var oldItems = JSON.parse(localStorage.getItem('products')) || [];
+
 
           oldItems.push(editForm)
       localStorage.setItem('products', JSON.stringify(oldItems));

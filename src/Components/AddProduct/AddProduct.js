@@ -23,26 +23,38 @@ const AddProduct = () => {
   // const [newProducts, setNewProducts] = useState([]);
 
   const handleInput = (event) => {
-
-  const { name, value } = event.target;
-  setAddForm({ ...addForm, [name]: value });
+    try {
+      const { name, value } = event.target;
+      setAddForm({ ...addForm, [name]: value });
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const handleUrlInput = (event) => {
-    addForm.images.push(event.target.value)
+    try {
+      addForm.images.push(event.target.value)
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   console.log('addForm boş form', addForm);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    try {
+      var oldItems = JSON.parse(localStorage.getItem('products')) || [];
+      oldItems.push(addForm);
 
-    var oldItems = JSON.parse(localStorage.getItem('products')) || [];
-    oldItems.push(addForm);
+      localStorage.setItem('products', JSON.stringify(oldItems));
 
-    localStorage.setItem('products', JSON.stringify(oldItems));
+      setAddForm(initialState);
 
-    setAddForm(initialState);
+    } catch (error) {
+      console.log(error)
+    }
     window.location.reload()
 
   };
@@ -51,7 +63,7 @@ const AddProduct = () => {
     <div>
       <form onSubmit={handleSubmit} className="add-product-form" >
         <h3 className='page-title'><strong>ADD A NEW PRODUCT</strong></h3>
-        <input type='text' value={addForm.id} name='id'/>
+        <input type='text' value={addForm.id} name='id' readOnly/>
         <label >Choose an brand:</label>
         <select name="brand" value={addForm.brand} onChange={handleInput} className="add-form-item">
           <option value="Select">Select</option>
