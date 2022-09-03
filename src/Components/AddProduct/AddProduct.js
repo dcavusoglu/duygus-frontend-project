@@ -44,6 +44,7 @@ const AddProduct = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     try {
       var oldItems = JSON.parse(localStorage.getItem('products')) || [];
       oldItems.push(addForm);
