@@ -14,7 +14,7 @@ const SearchBox = ( {data} ) => {
     const matchedItems = data.filter((product) => {
       return product.title.toLowerCase().includes(searchedItem);
     });
-    setSearchedInput(matchedItems);
+    (searchedItem === "") ? setSearchedInput("") : setSearchedInput(matchedItems);
   }
 
   return (
