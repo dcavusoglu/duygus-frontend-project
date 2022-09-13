@@ -3,3 +3,27 @@
   top: 5rem;
   right: 1.5rem;
 }
+
+
+.search-result {
+  height: 6rem;
+  width: 6rem;
+  background-color: wheat;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.search-result .search-item {
+  color: black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+  background-color: white;
+}
