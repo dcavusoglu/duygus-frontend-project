@@ -18,13 +18,14 @@
   flex: 60% 40%;
   text-align: left;
   padding: 2rem;
-  height: 30rem;
-}
-
-.left-column, .right-column {
+  height: 50rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
+
+
+
 
 
 .product-title, .product-thumbnail, .product-description, .product-tags, .product-images, .product-info {
@@ -40,7 +41,6 @@
 .product-info {
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
 }
 .product-description{
   height: 5rem;

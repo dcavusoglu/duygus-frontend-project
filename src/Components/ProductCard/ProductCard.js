@@ -24,23 +24,40 @@ const ProductCard = () => {
     <div className='body-wrapper'>
       <div className='card-wrapper'>
       {allProducts.map(product => (
-          <Link to={`/products/${product.id-1}`} className='product--link' key={product.id}>
 
-            <div className={(product.id-1 === 0) ? 'first-product-container' : 'product-wrapper'}>
+            <div className={(product.id-1 === 0) ? 'first-product-container' : 'product-wrapper'} key={product.id}>
               <div className={(product.id-1 === 0) ? 'first-img-cont' : 'image-wrapper'}>
                   <img src={product.thumbnail} alt="pic-img"  className={(product.id-1 === 0) ? 'first-img' : 'product-picture'}/>
               </div>
               <div className={(product.id-1 === 0) ? 'first-details-cont' : 'info-wrapper'}>
                 <h1 className={(product.id-1 === 0) ? 'first-heading' : 'pro-title'}>{product.title}</h1>
                 <p className={(product.id-1 === 0) ? 'first-details' : 'pro-description'}>{product.description}</p>
-                <MoreBtn />
+                <Link to={`/products/${product.id-1}`} className='product--link' >
+                  <MoreBtn />
+                </Link>
               </div>
             </div>
 
 
-            </Link>
       ))
       }
+
+      {/* {allProducts.map(product => (
+
+            <div className='product-wrapper' key={product.id}>
+              <div className='image-wrapper'>
+                  <img src={product.thumbnail} alt="pic-img"  className='product-picture'/>
+              </div>
+              <div className='info-wrapper'>
+                <h1 className='pro-title'>{product.title}</h1>
+                <p className='pro-description'>{product.description}</p>
+                <Link to={`/products/${product.id-1}`} className='product--link' >
+                  <MoreBtn />
+                </Link>
+              </div>
+            </div>
+      ))
+      } */}
           </div>
     </div>
   )

@@ -43,7 +43,7 @@ const NewProduct = () => {
 
           <div key={product.id} className='product-wrapper'>
 
-            <div className='imgage-wrapper'>
+            <div className='image-wrapper'>
                 <img src={product.thumbnail} alt="pic-img" className='product-picture'/>
             </div>
 

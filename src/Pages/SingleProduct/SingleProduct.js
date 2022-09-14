@@ -6,6 +6,9 @@ const SingleProduct = () => {
   return (
     <div>
       <Product/>
+      <br/>
+      <br/>
+      <br/>
       <Link to={'/'} className="back-btn">Back</Link>
     </div>
   )
