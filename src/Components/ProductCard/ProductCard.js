@@ -27,7 +27,7 @@ const ProductCard = () => {
           <Link to={`/products/${product.id-1}`} className='product--link' key={product.id}>
 
             <div className={(product.id-1 === 0) ? 'first-product-container' : 'product-wrapper'}>
-              <div className={(product.id-1 === 0) ? 'first-img-cont' : 'imgage-wrapper'}>
+              <div className={(product.id-1 === 0) ? 'first-img-cont' : 'image-wrapper'}>
                   <img src={product.thumbnail} alt="pic-img"  className={(product.id-1 === 0) ? 'first-img' : 'product-picture'}/>
               </div>
               <div className={(product.id-1 === 0) ? 'first-details-cont' : 'info-wrapper'}>
