@@ -8,7 +8,6 @@ const SingleProduct = () => {
       <Product/>
       <br/>
       <br/>
-      <br/>
       <Link to={'/'} className="back-btn">Back</Link>
     </div>
   )
